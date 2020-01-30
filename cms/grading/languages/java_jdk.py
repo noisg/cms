@@ -78,10 +78,13 @@ class JavaJDK(Language):
         if JavaJDK.USE_JAR:
             # executable_filename is a jar file, main is the name of
             # the main java class
-            return [["/usr/bin/java", "-Deval=true", "-Xmx512M", "-Xss64M",
-                     "-cp", executable_filename, main] + args]
+	    # Suggested by Martin to be lowered by 24MB given problem limit of 1024MB
+            return [["/usr/bin/java", "-Deval=true", "-Xmx1000M", "-Xss1000M",
+                     "-Xbatch", "-XX:+UseSerialGC", "-XX:-TieredCompilation",
+	                     "-XX:CICompilerCount=1", "-cp", executable_filename, main] + args]
         else:
             unzip_command = ["/usr/bin/unzip", executable_filename]
-            command = ["/usr/bin/java", "-Deval=true", "-Xmx512M", "-Xss64M",
-                       main] + args
+            command = ["/usr/bin/java", "-Deval=true", "-Xmx1000M", "-Xss1000M",
+                       "-Xbatch", "-XX:+UseSerialGC", "-XX:-TieredCompilation",
+	                       "-XX:CICompilerCount=1", main] + args
             return [unzip_command, command]
