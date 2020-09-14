@@ -930,6 +930,7 @@ abbr {
 
 #UserDetail_flag {
   bottom: 0;
+  max-width: 100px;
 }
 
 #UserDetail_face {
