@@ -71,7 +71,7 @@ class Batch(TaskType):
     CHECKER_CODENAME = "checker"
     # Basename of the grader, used in the manager filename and as the main
     # class in languages that require us to specify it.
-    GRADER_BASENAME = "grader"
+    GRADER_BASENAME = "stub"
     # Default input and output filenames when not provided as parameters.
     DEFAULT_INPUT_FILENAME = "input.txt"
     DEFAULT_OUTPUT_FILENAME = "output.txt"
@@ -80,7 +80,7 @@ class Batch(TaskType):
     OUTPUT_EVAL_DIFF = "diff"
     OUTPUT_EVAL_CHECKER = "comparator"
     COMPILATION_ALONE = "alone"
-    COMPILATION_GRADER = "grader"
+    COMPILATION_GRADER = "stub"
 
     # Other constants to specify the task type behaviour and parameters.
     ALLOW_PARTIAL_SUBMISSION = False
