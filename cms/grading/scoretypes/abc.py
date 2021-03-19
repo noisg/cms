@@ -409,7 +409,7 @@ class ScoreTypeGroup(ScoreTypeAlone):
                     # Only block restricted feedback if this is the first
                     # *public* non-correct testcase, otherwise we might be
                     # leaking info on private testcases.
-                    if tc_outcome != "Correct":
+                    if (tc_outcome != "Correct") and (tc_outcome != "Partially correct"):
                         previous_tc_all_correct = False
                 else:
                     public_testcases.append({"idx": tc_idx})
