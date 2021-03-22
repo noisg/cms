@@ -58,7 +58,6 @@
         {% trans start_time=contest.analysis_start|format_datetime_smart,
                  stop_time=contest.analysis_stop|format_datetime_smart %}
           The analysis mode started at {{ start_time }} and will end at {{ stop_time }}.
-          <b><font color="red">Note that submissions made during analysis mode will NOT be graded.</font></b>
         {% endtrans %}
   {% elif phase == +3 %}
         {% trans %}The analysis mode has already ended.{% endtrans %}
@@ -70,7 +69,9 @@
         {% endtrans %}
   {% endif %}
         </p>
-
+        <p>
+            <b><font color="red">Note that submissions made during analysis mode will NOT be graded.</font></b>
+        </p>
 {% endif %}
 
 
