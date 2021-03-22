@@ -225,6 +225,8 @@ $(document).ready(function () {
 </div>
 {% endif %}
 
+{% if not contest.analysis_enabled %}
+
 <h2 style="margin-bottom: 10px">{% trans %}Submit a solution{% endtrans %}</h2>
 
 {% set task_type = get_task_type(dataset=task.active_dataset) %}
@@ -299,6 +301,7 @@ $(document).ready(function () {
 {% endif %}
 </div>
 
+{% endif %}
 
 <h2 style="margin: 40px 0 10px">{% trans %}Previous submissions{% endtrans %}</h2>
 
