@@ -167,6 +167,7 @@ setup(
             "cmsRemoveTask=cmscontrib.RemoveTask:main",
             "cmsRemoveUser=cmscontrib.RemoveUser:main",
             "cmsSpoolExporter=cmscontrib.SpoolExporter:main",
+            "cmsUpdateUser=cmscontrib.UpdateUser:main",
             "cmsMake=cmstaskenv.cmsMake:main",
         ],
         "cms.grading.tasktypes": [
