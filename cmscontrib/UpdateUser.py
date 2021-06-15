@@ -68,11 +68,11 @@ def edit_user(first_name, last_name, username, password, method, is_hashed,
                 logger.error("User %s does not exist.", username)
                 return False
 
-            if password is not None:
+            if password is not None and user.password != stored_password:
                 user.password = stored_password
                 updated_fields.append("Password")
 
-            if preferred_languages is not None:
+            if preferred_languages is not None and user.preferred_languages != user.preferred_languages:
                 user.preferred_languages = preferred_languages
                 updated_fields.append("Preferred Languages")
             
