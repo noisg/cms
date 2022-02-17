@@ -166,6 +166,7 @@ setup(
             "cmsRemoveSubmissions=cmscontrib.RemoveSubmissions:main",
             "cmsRemoveTask=cmscontrib.RemoveTask:main",
             "cmsRemoveUser=cmscontrib.RemoveUser:main",
+            "cmsAddUser=cmscontrib.UpdateUser:main"
             "cmsSpoolExporter=cmscontrib.SpoolExporter:main",
             "cmsMake=cmstaskenv.cmsMake:main",
         ],
