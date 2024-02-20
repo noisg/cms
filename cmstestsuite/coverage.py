@@ -5,9 +5,10 @@
 # Copyright © 2013-2018 Stefano Maggiolo <s.maggiolo@gmail.com>
 # Copyright © 2013-2016 Luca Wehrstedt <luca.wehrstedt@gmail.com>
 # Copyright © 2014 Luca Versari <veluca93@gmail.com>
-# Copyright © 2014 William Di Luigi <williamdiluigi@gmail.com>
+# Copyright © 2014-2022 William Di Luigi <williamdiluigi@gmail.com>
 # Copyright © 2016 Peyman Jabbarzade Ganje <peyman.jabarzade@gmail.com>
 # Copyright © 2017 Luca Chiodini <luca@chiodini.org>
+# Copyright © 2021 Andrey Vihrov <andrey.vihrov@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -23,7 +24,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import logging
-import subprocess
 import sys
 
 from cmstestsuite import CONFIG, sh
@@ -46,7 +46,7 @@ _COVERAGE_CMDLINE = [
 
 def coverage_cmdline(cmdline):
     """Return a cmdline possibly decorated to record coverage."""
-    if CONFIG.get('COVERAGE', False):
+    if CONFIG.get('COVERAGE', None):
         return _COVERAGE_CMDLINE + cmdline
     else:
         return cmdline
@@ -54,22 +54,16 @@ def coverage_cmdline(cmdline):
 
 def clear_coverage():
     """Clear existing coverage reports."""
-    if CONFIG.get('COVERAGE', False):
+    if CONFIG.get('COVERAGE', None):
         logging.info("Clearing old coverage data.")
         sh([sys.executable, "-m", "coverage", "erase"])
 
 
 def combine_coverage():
     """Combine coverage reports from different programs."""
-    if CONFIG.get('COVERAGE', False):
+    coverage_file = CONFIG.get('COVERAGE', None)
+
+    if coverage_file:
         logger.info("Combining coverage results.")
         sh([sys.executable, "-m", "coverage", "combine"])
-
-
-def send_coverage_to_codecov(flag):
-    """Send the coverage report to Codecov with the given flag."""
-    if CONFIG.get('COVERAGE', False):
-        logger.info("Sending coverage results to codecov for flag %s." % flag)
-        subprocess.check_call(
-            "bash -c 'bash <(curl -s https://codecov.io/bash) -c -F %s'" %
-            flag, shell=True)
+        sh([sys.executable, "-m", "coverage", "xml", "-o", coverage_file])

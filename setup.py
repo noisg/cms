@@ -142,7 +142,7 @@ setup(
              "scripts/cmsDropDB"],
     entry_points={
         "console_scripts": [
-            "cmsRunTests=cmstestsuite.RunTests:main",
+            "cmsRunFunctionalTests=cmstestsuite.RunFunctionalTests:main",
             "cmsAddAdmin=cmscontrib.AddAdmin:main",
             "cmsAddParticipation=cmscontrib.AddParticipation:main",
             "cmsAddStatement=cmscontrib.AddStatement:main",
@@ -204,7 +204,6 @@ setup(
         "Development Status :: 5 - Production/Stable",
         "Natural Language :: English",
         "Operating System :: POSIX :: Linux",
-        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.8",
         "License :: OSI Approved :: "
         "GNU Affero General Public License v3",
